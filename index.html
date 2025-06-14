@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Mini Talking Pet</title>
+  <style>
+    body {
+      text-align: center;
+      font-family: sans-serif;
+      background-color: #f0f8ff;
+    }
+    img {
+      width: 250px;
+      margin-top: 20px;
+    }
+    button {
+      font-size: 1.2rem;
+      padding: 10px 20px;
+      margin-top: 20px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🗣️ Talking Pet</h1>
+  <p>กดปุ่มแล้วพูด ตัวละครจะพูดตามคุณ!</p>
+  <button onclick="startTalking()">พูดกับฉันสิ!</button>
+
+  <script>
+    function startTalking() {
+      if (!navigator.mediaDevices) {
+        alert("เบราว์เซอร์ของคุณไม่รองรับไมโครโฟน");
+        return;
+      }
+
+      navigator.mediaDevices.getUserMedia({ audio: true })
+        .then(stream => {
+          const mediaRecorder = new MediaRecorder(stream);
+          const audioChunks = [];
+
+          mediaRecorder.ondataavailable = event => {
+            audioChunks.push(event.data);
+          };
+
+          mediaRecorder.onstop = () => {
+            const audioBlob = new Blob(audioChunks);
+            const audioUrl = URL.createObjectURL(audioBlob);
+            const audio = new Audio(audioUrl);
+            audio.play();
+          };
+
+          mediaRecorder.start();
+
+          setTimeout(() => {
+            mediaRecorder.stop();
+          }, 3000); // อัดเสียง 3 วินาที
+        })
+        .catch(err => {
+          console.error("ไมโครโฟนมีปัญหา:", err);
+          alert("ไม่สามารถเข้าถึงไมโครโฟน");
+        });
+    }
+  </script>
+
+</body>
+</html>
