@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>คุณภาพอากาศจาก OpenWeather</title>
+</head>
+<body>
+  <h1>ข้อมูลคุณภาพอากาศ (AQI)</h1>
+  <p id="aqi">กำลังโหลดข้อมูล...</p>
+  <p id="pollutants"></p>
+
+  <script>
+    const apiKey = "28f0db7005f38c6dd756da291b871f12";
+    const lat = 13.75;
+    const lon = 100.50;
+
+    fetch(`https://api.openweathermap.org/data/2.5/air_pollution?lat=12.7981&lon=99.9667&appid=28f0db7005f38c6dd756da291b871f12`)
+      .then(response => response.json())
+      .then(data => {
+        const aqi = data.list[0].main.aqi;
+        const components = data.list[0].components;
+
+        let aqiText = "";
+        switch (aqi) {
+          case 1: aqiText = "ดีมาก (Very Good)"; break;
+          case 2: aqiText = "ดี (Good)"; break;
+          case 3: aqiText = "ปานกลาง (Moderate)"; break;
+          case 4: aqiText = "แย่ (Poor)"; break;
+          case 5: aqiText = "แย่มาก (Very Poor)"; break;
+        }
+
+        document.getElementById("aqi").innerText = "ระดับ AQI: " + aqi + " → " + aqiText;
+
+        document.getElementById("pollutants").innerHTML = `
+          <strong>รายละเอียดมลพิษ:</strong><br>
+          PM2.5: ${components.pm2_5} µg/m³<br>
+          PM10: ${components.pm10} µg/m³<br>
+          CO: ${components.co} µg/m³<br>
+          NO₂: ${components.no2} µg/m³<br>
+          O₃: ${components.o3} µg/m³<br>
+        `;
+      })
+      .catch(error => {
+        document.getElementById("aqi").innerText = "เกิดข้อผิดพลาดในการโหลดข้อมูล";
+        console.error("Error:", error);
+      });
+  </script>
+</body>
+</html>
