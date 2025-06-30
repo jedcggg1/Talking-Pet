@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ระบบซื้อและให้อาหารสัตว์</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <h2>🐾 ระบบซื้อและให้อาหารสัตว์</h2>
+  <input type="number" id="moneyInput" placeholder="จำนวนเงิน (บาท)" />
+  <button onclick="saveMoney()">💰 เก็บเงิน</button>
+  <p id="balance">ยอดเงินคงเหลือ: 0 บาท</p>
+  <button onclick="buyFood()">🛒 ซื้ออาหาร (10 บาท)</button>
+  <button onclick="loadFood()">🍽 แสดงอาหาร</button>
+  <div id="message"></div>
+  <div id="foodContainer"></div>
+  <div id="animal">
+    <img src="https://i.imgur.com/IaUrttj.png" alt="สัตว์" />
+  </div>
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-database-compat.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

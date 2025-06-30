@@ -1,0 +1,73 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: sans-serif;
+  text-align: center;
+  background-color: #e0f7fa;
+  margin: 0;
+  padding: 20px;
+}
+
+input,
+button {
+  padding: 10px;
+  margin: 5px;
+  font-size: 1rem;
+  width: 100%;
+  max-width: 300px;
+}
+
+.foodItem {
+  background: #fff8dc;
+  padding: 10px;
+  margin: 10px auto;
+  border: 1px solid #aaa;
+  max-width: 300px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#animal {
+  margin: 30px auto;
+  max-width: 300px;
+  width: 100%;
+  height: auto;
+  background: #dcedc8;
+  border: 2px dashed #333;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#animal img {
+  width: 60%;
+  max-width: 150px;
+}
+
+#message {
+  font-size: 1.2rem;
+  height: 30px;
+  color: green;
+  margin-top: 10px;
+}
+
+#foodContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+@media (min-width: 600px) {
+  #foodContainer {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .foodItem {
+    margin: 10px;
+  }
+}
