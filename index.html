@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Talking Tom Game Main Menu</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+    <div class="coin">
+        <img src="coin.jpg" alt="Coin">
+        <p id="balance">0</p>
+    </div>
+    
+    <div class="hunger-bar-container">
+        <div class="hunger-bar">
+            <div class="hunger-fill" id="hungerFill"></div>
+        </div>
+        <div class="hunger-icon">
+            <img src='food1.png' alt="Food Icon">
+        </div>
+    </div>
+    
+    <div class="character">
+        <img src="character1.png" alt="Character" id="characterImage">
+    </div>
+    
+    <div class="buttons">
+        <a class="button1" href="#">
+            <img src="bag.jpg" alt="Button 1">
+        </a>
+        <a class="button2" href="weather.html">
+            <img src="weather.jpg" alt="Button 2">
+        </a>
+        <a class="button3" href="mode.html">
+            <img src="map.jpg" alt="Button 3">
+        </a>
+    </div>
+    
+    <div class="right-buttons">
+        <a class="button4" href="character.html">
+            <img src="change.png" alt="Change Character">
+        </a>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-database-compat.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>
